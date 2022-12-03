@@ -46,12 +46,12 @@ export const Comments = ({ data, comments, users }) => {
   const submitForm = (e) => {
     e.preventDefault();
     let errs = {};
-    if (comment.comment.length < 2) {
+    if (comment?.comment?.length < 2) {
       errs.message = "Comments must be atleast 2 letters";
       setErrors(errs);
       return;
     }
-    setErrors(null);
+    setErrors("");
     createComment();
   };
   const createComment = async () => {
@@ -79,8 +79,8 @@ export const Comments = ({ data, comments, users }) => {
         [e.target.name]: e.target.value,
       };
     });
-    console.log(comment.comment);
-    if (comment.comment.length > 0) {
+    console.log(comment?.comment);
+    if (comment?.comment?.length > 0) {
       setErrors({});
     }
   };

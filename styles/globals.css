@@ -324,3 +324,43 @@ a {
   background-color: d9f9ff;
   width: clamp(200px, 70vw, 500px);
 }
+
+.sign--in {
+  position: relative;
+}
+.drop--login {
+  display: none;
+  position: absolute;
+}
+.sign--in:hover .drop--login {
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 10vw;
+  align-items: center;
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  padding: 10px;
+}
+li {
+  list-style: none;
+}
+
+.fa-brands {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  margin-top: 8px;
+}
+.drop--login > li {
+  cursor: pointer;
+  border-bottom: black 1px solid;
+}
+.drop--login > li:hover {
+  padding: 15px;
+  background-color: #ada2ae;
+}
+/* .drop--login {
+  width: webkit-fill-available;
+} */

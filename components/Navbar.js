@@ -1,10 +1,15 @@
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import Script from "next/script";
 export const Navbar = () => {
   const { data: session } = useSession();
   return (
     <>
+      <Script
+        src="https://kit.fontawesome.com/ad91fb5d97.js"
+        crossorigin="anonymous"
+      ></Script>
       <nav className="header">
         <h1 className="logo">
           <a href="/">Blog</a>
@@ -43,15 +48,34 @@ export const Navbar = () => {
             </>
           ) : (
             <li>
-              <Link
-                onClick={(e) => {
-                  e.preventDefault();
-                  signIn();
-                }}
-                href={"/api/auth/signin"}
-              >
-                Sign In
-              </Link>
+              <div className="sign--in">
+                <div className="signInContainer">Sign In</div>
+                <ul className="drop--login">
+                  <li
+                    onClick={(e) => {
+                      e.preventDefault();
+                      signIn("facebook", {
+                        callbackUrl: "http://localhost:3000",
+                      });
+                    }}
+                  >
+                    <i className="fa-brands fa-facebook"></i>
+                  </li>
+                  <li
+                    onClick={(e) => {
+                      e.preventDefault();
+                      signIn("github", {
+                        callbackUrl: "http://localhost:3000",
+                      });
+                    }}
+                  >
+                    <i className="fa-brands fa-github"></i>
+                  </li>
+                  <li>
+                    <i className="fa-brands fa-google"></i>
+                  </li>
+                </ul>
+              </div>
             </li>
           )}
         </ul>
